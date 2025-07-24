@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "Chameleon",
     platforms: [
-        .iOS(.v13)
+        .iOS(.v12)
     ],
     products: [
         .library(
@@ -33,9 +33,6 @@ let package = Package(
             dependencies: ["ChameleonObjC"],
             path: "Sources/Chameleon",
             sources: ["Swift"],
-            swiftSettings: [
-                .define("SWIFT_PACKAGE")
-            ],
             linkerSettings: [
                 .linkedFramework("UIKit", .when(platforms: [.iOS, .tvOS, .watchOS, .visionOS])),
                 .linkedFramework("Foundation")
