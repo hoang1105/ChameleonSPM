@@ -15,7 +15,7 @@ let package = Package(
         .target(
             name: "Chameleon",
             path: "Sources/Chameleon",
-            sources: ["ObjC", "UIColor+ChameleonSwift.swift"],
+            sources: ["ObjC"],
             publicHeadersPath: "include",
             cSettings: [
                 .headerSearchPath("include"),
