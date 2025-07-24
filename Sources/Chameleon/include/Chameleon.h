@@ -17,6 +17,7 @@ FOUNDATION_EXPORT const unsigned char ChameleonVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import <Chameleon/PublicHeader.h>
 
 #import "Chameleon_.h"
+#import "ChameleonMacros.h"
 
 #import "UIButton+Chameleon.h"
 #import "UILabel+Chameleon.h"
