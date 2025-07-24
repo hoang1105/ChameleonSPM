@@ -9,13 +9,13 @@ let package = Package(
     products: [
         .library(
             name: "Chameleon",
-            targets: ["Chameleon"]),
+            targets: ["ChameleonSwift"]),
     ],
     targets: [
         .target(
-            name: "Chameleon",
+            name: "ChameleonObjC",
             path: "Sources/Chameleon",
-            sources: ["ObjC", "Swift"],
+            sources: ["ObjC"],
             publicHeadersPath: "include",
             cSettings: [
                 .headerSearchPath("include"),
@@ -23,6 +23,16 @@ let package = Package(
                 .define("SWIFT_PACKAGE"),
                 .unsafeFlags(["-fmodules"])
             ],
+            linkerSettings: [
+                .linkedFramework("UIKit", .when(platforms: [.iOS, .tvOS, .watchOS, .visionOS])),
+                .linkedFramework("Foundation")
+            ]
+        ),
+        .target(
+            name: "ChameleonSwift",
+            dependencies: ["ChameleonObjC"],
+            path: "Sources/Chameleon",
+            sources: ["Swift"],
             linkerSettings: [
                 .linkedFramework("UIKit", .when(platforms: [.iOS, .tvOS, .watchOS, .visionOS])),
                 .linkedFramework("Foundation")
