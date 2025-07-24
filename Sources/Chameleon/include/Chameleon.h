@@ -17,14 +17,15 @@ FOUNDATION_EXPORT const unsigned char ChameleonVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import <Chameleon/PublicHeader.h>
 
 #import "Chameleon_.h"
-#import "ChameleonConstants.h"
-#import "ChameleonEnums.h"
-#import "ChameleonMacros.h"
+
+#import "UIButton+Chameleon.h"
+#import "UILabel+Chameleon.h"
+#import "UIColor+ChameleonPrivate.h"
+#import "UIImage+ChameleonPrivate.h"
+#import "UIView+ChameleonPrivate.h"
+#import "UIAppearance+Swift.h"
 
 #import "NSArray+Chameleon.h"
-#import "UIButton+Chameleon.h"
 #import "UIColor+Chameleon.h"
-#import "UILabel+Chameleon.h"
 #import "UINavigationController+Chameleon.h"
 #import "UIViewController+Chameleon.h"
-#import "UIAppearance+Swift.h"

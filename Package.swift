@@ -15,11 +15,16 @@ let package = Package(
         .target(
             name: "ChameleonObjC",
             path: "Sources/Chameleon",
-            exclude: ["ChameleonShorthand.swift"],
+            sources: ["ObjC"],
             publicHeadersPath: "include",
             cSettings: [
                 .headerSearchPath("include"),
+                .headerSearchPath("ObjC"),
                 .define("SWIFT_PACKAGE")
+            ],
+            linkerSettings: [
+                .linkedFramework("UIKit"),
+                .linkedFramework("Foundation")
             ]
         ),
         .target(
