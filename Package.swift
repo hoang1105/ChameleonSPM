@@ -13,13 +13,19 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "Chameleon",
+            name: "ChameleonObjC",
             path: "Sources/Chameleon",
+            exclude: ["ChameleonShorthand.swift"],
             publicHeadersPath: "include",
             cSettings: [
                 .headerSearchPath("include"),
                 .define("SWIFT_PACKAGE")
             ]
+        ),
+        .target(
+            name: "Chameleon",
+            dependencies: ["ChameleonObjC"],
+            path: "Sources/Swift"
         )
     ]
 )

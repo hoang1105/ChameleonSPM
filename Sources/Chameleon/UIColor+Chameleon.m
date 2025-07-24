@@ -305,7 +305,7 @@
         CGSize size = {1, 1};
         
         //Create a 1x1 bitmap context
-        UIGraphicsBeginImageContext(size);
+        UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
         CGContextRef ctx = UIGraphicsGetCurrentContext();
         
         //Set the interpolation quality to medium
@@ -382,7 +382,7 @@
         CGSize size = {1, 1};
         
         //Create a 1x1 bitmap context
-        UIGraphicsBeginImageContext(size);
+        UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
         CGContextRef ctx = UIGraphicsGetCurrentContext();
         
         //Set the interpolation quality to medium
@@ -431,7 +431,7 @@
         CGSize size = {1, 1};
         
         //Create a 1x1 bitmap context
-        UIGraphicsBeginImageContext(size);
+        UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
         CGContextRef ctx = UIGraphicsGetCurrentContext();
         
         //Set the interpolation quality to medium
