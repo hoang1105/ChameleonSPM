@@ -1,4 +1,5 @@
 import UIKit
+import ChameleonObjC
 
 // MARK: - UIColor Methods Shorthand
 
