@@ -14,13 +14,8 @@ let package = Package(
     targets: [
         .target(
             name: "Chameleon",
-            dependencies: [],
             path: "Sources/Chameleon",
-            // Không cần 'exclude' hay 'publicHeadersPath' ở đây nữa
-            // vì chúng ta sẽ dùng module map.
-            cSettings: [
-                .headerSearchPath("."),
-            ]
+            publicHeadersPath: "include"
         )
     ]
 )
