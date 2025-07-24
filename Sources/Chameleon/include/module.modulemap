@@ -1,6 +1,12 @@
-framework module Chameleon {
+module Chameleon {
     umbrella header "Chameleon.h"
-
+    
     export *
     module * { export * }
+    
+    explicit module Private {
+        header "UIColor+ChameleonPrivate.h"
+        header "UIImage+ChameleonPrivate.h"
+        header "UIView+ChameleonPrivate.h"
+    }
 }

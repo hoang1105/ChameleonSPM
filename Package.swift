@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "Chameleon",
     platforms: [
-        .iOS(.v9)
+        .iOS(.v12)
     ],
     products: [
         .library(
@@ -15,7 +15,11 @@ let package = Package(
         .target(
             name: "Chameleon",
             path: "Sources/Chameleon",
-            publicHeadersPath: "include"
+            publicHeadersPath: "include",
+            cSettings: [
+                .headerSearchPath("include"),
+                .define("SWIFT_PACKAGE")
+            ]
         )
     ]
 )
