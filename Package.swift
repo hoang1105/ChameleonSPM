@@ -13,24 +13,20 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "ChameleonObjC",
+            name: "Chameleon",
             path: "Sources/Chameleon",
             sources: ["ObjC"],
             publicHeadersPath: "include",
             cSettings: [
                 .headerSearchPath("include"),
                 .headerSearchPath("ObjC"),
-                .define("SWIFT_PACKAGE")
+                .define("SWIFT_PACKAGE"),
+                .unsafeFlags(["-fmodules"])
             ],
             linkerSettings: [
-                .linkedFramework("UIKit"),
+                .linkedFramework("UIKit", .when(platforms: [.iOS, .tvOS, .watchOS, .visionOS])),
                 .linkedFramework("Foundation")
             ]
-        ),
-        .target(
-            name: "Chameleon",
-            dependencies: ["ChameleonObjC"],
-            path: "Sources/Swift"
         )
     ]
 )
