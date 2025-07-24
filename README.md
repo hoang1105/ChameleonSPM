@@ -42,7 +42,7 @@ dependencies: [
 
 **Swift:**
 ```swift
-import Chameleon
+import ChameleonSwift
 ```
 
 **Objective-C:**
@@ -55,7 +55,7 @@ import Chameleon
 **Swift:**
 ```swift
 import UIKit
-import Chameleon
+import ChameleonSwift
 
 class ViewController: UIViewController {
     override func viewDidLoad() {
