@@ -15,7 +15,7 @@ let package = Package(
         .target(
             name: "Chameleon",
             path: "Sources/Chameleon",
-            sources: ["ObjC"],
+            sources: ["ObjC", "Swift"],
             publicHeadersPath: "include",
             cSettings: [
                 .headerSearchPath("include"),
