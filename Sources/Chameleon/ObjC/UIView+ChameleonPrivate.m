@@ -6,6 +6,11 @@
 //  Copyright (c) 2015 Vicc Alexander. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+#import <CoreGraphics/CoreGraphics.h>
+#import <UIKit/UIKit.h>
+#import <UIKit/UIView.h>
+#import <UIKit/UIWindow.h>
 #import "UIView+ChameleonPrivate.h"
 
 @implementation UIView (ChameleonPrivate)
