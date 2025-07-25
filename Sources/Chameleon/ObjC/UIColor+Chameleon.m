@@ -1083,22 +1083,4 @@
     return rgba(red * 255, green * 255, blue * 255, alpha);
 }
 
-#pragma mark - iOS 13+ Dark Mode Support
-
-+ (UIColor *)colorWithLightModeColor:(UIColor * _Nonnull)lightColor darkModeColor:(UIColor * _Nonnull)darkColor API_AVAILABLE(ios(13.0)) {
-    
-    if (@available(iOS 13.0, *)) {
-        return [UIColor colorWithDynamicProvider:^UIColor * _Nonnull(UITraitCollection * _Nonnull traitCollection) {
-            if (traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
-                return darkColor;
-            } else {
-                return lightColor;
-            }
-        }];
-    } else {
-        // Fallback for iOS 12 and earlier
-        return lightColor;
-    }
-}
-
 @end
