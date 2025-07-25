@@ -201,22 +201,14 @@
     
     //Check for clear or uncalculatable color and assume white
     if (![backgroundColor getRed:&red green:&green blue:&blue alpha:nil]) {
-        if (@available(iOS 13.0, *)) {
-            return UIStatusBarStyleDarkContent;
-        } else {
-            return UIStatusBarStyleDefault;
-        }
+        return UIStatusBarStyleDefault;
     }
     
     //Relative luminance in colorimetric spaces - http://en.wikipedia.org/wiki/Luminance_(relative)
     red *= 0.2126f; green *= 0.7152f; blue *= 0.0722f;
     luminance = red + green + blue;
     
-    if (@available(iOS 13.0, *)) {
-        return (luminance > 0.6f) ? UIStatusBarStyleDarkContent : UIStatusBarStyleLightContent;
-    } else {
-        return (luminance > 0.6f) ? UIStatusBarStyleDefault : UIStatusBarStyleLightContent;
-    }
+    return (luminance > 0.6f) ? UIStatusBarStyleDefault : UIStatusBarStyleLightContent;
 }
 
 @end

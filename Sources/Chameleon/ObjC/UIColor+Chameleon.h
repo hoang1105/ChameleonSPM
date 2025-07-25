@@ -1024,20 +1024,6 @@ typedef NS_ENUM (NSInteger, UIShadeStyle) {
  */
 - (UIColor * _Nullable)lightenByPercentage:(CGFloat)percentage;
 
-#pragma mark - iOS 13+ Dark Mode Support
-
-/**
- *  Creates and returns a dynamic color that automatically adapts to light/dark mode on iOS 13+.
- *
- *  @param lightColor The color to use in light mode.
- *  @param darkColor The color to use in dark mode.
- *
- *  @return A dynamic UIColor object that adapts to interface style.
- *
- *  @since 3.0
- */
-+ (UIColor *)colorWithLightModeColor:(UIColor * _Nonnull)lightColor darkModeColor:(UIColor * _Nonnull)darkColor API_AVAILABLE(ios(13.0));
-
 #pragma mark - Deprecated Methods
 
 /**

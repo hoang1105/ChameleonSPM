@@ -16,14 +16,6 @@
  */
 extern const UIStatusBarStyle UIStatusBarStyleContrast;
 
-/**
- *  A dark content status bar for iOS 13+
- *
- *  @since 3.0
- */
-API_AVAILABLE(ios(13.0))
-extern const UIStatusBarStyle UIStatusBarStyleDarkContentCompat;
-
 @interface ChameleonConstants : NSObject
 
 @end

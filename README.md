@@ -12,8 +12,8 @@ Phiên bản này đã được cập nhật để tương thích hoàn toàn v�
 
 ## Yêu cầu
 
-* iOS 13.0+
-* Xcode 12+  
+* iOS 12.0+
+* Xcode 12+
 * Swift 5.0+
 
 ## Cài đặt với Swift Package Manager
@@ -69,22 +69,6 @@ class ViewController: UIViewController {
         
         // Tạo màu ngẫu nhiên
         let randomColor = UIColor.randomFlat
-        
-        // iOS 13+ Dark Mode support
-        if #available(iOS 13.0, *) {
-            let dynamicColor = UIColor.colorWithLightModeColor(UIColor.flatMint, 
-                                                     darkModeColor: UIColor.flatMintDark)
-            view.backgroundColor = dynamicColor
-        }
-    }
-    
-    // Modern status bar handling
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        if #available(iOS 13.0, *) {
-            return .darkContent
-        } else {
-            return .default
-        }
     }
 }
 ```
@@ -104,22 +88,6 @@ class ViewController: UIViewController {
     
     // Tạo màu bổ sung
     UIColor *complementaryColor = [UIColor colorWithComplementaryFlatColorOf:[UIColor flatMintColor]];
-    
-    // iOS 13+ Dark Mode support
-    if (@available(iOS 13.0, *)) {
-        UIColor *dynamicColor = [UIColor colorWithLightModeColor:[UIColor flatMintColor]
-                                                   darkModeColor:[UIColor flatMintDarkColor]];
-        self.view.backgroundColor = dynamicColor;
-    }
-}
-
-// Modern status bar handling (iOS 13+)
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    if (@available(iOS 13.0, *)) {
-        return UIStatusBarStyleDarkContent;
-    } else {
-        return UIStatusBarStyleDefault;
-    }
 }
 
 @end
@@ -127,116 +95,11 @@ class ViewController: UIViewController {
 
 ## Tính năng chính
 
-### 🎨 **Flat Colors**
-Hơn 24 màu flat được thiết kế đẹp mắt với phiên bản sáng và tối:
-```objc
-// Light colors
-UIColor *lightBlue = [UIColor flatBlueColor];
-UIColor *lightGreen = [UIColor flatGreenColor];
-
-// Dark colors  
-UIColor *darkBlue = [UIColor flatBlueDarkColor];
-UIColor *darkGreen = [UIColor flatGreenDarkColor];
-```
-
-### 🌓 **iOS 13+ Dark Mode Support** 
-Tạo màu động thích ứng với Light/Dark mode:
-```objc
-// Tạo màu dynamic cho iOS 13+
-UIColor *dynamicColor = [UIColor colorWithLightModeColor:[UIColor flatBlueColor] 
-                                           darkModeColor:[UIColor flatBlueDarkColor]];
-
-// Màu sẽ tự động thay đổi khi user chuyển Dark/Light mode
-self.view.backgroundColor = dynamicColor;
-```
-
-### 📊 **Status Bar Style (iOS 13+)**
-Quản lý status bar style hiện đại:
-```objc
-// Trong View Controller
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    if (@available(iOS 13.0, *)) {
-        return UIStatusBarStyleDarkContent; // Cho text màu tối trên background sáng
-    } else {
-        return UIStatusBarStyleDefault;     // Fallback cho iOS 12
-    }
-}
-
-// Hoặc sử dụng contrasting style
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return [self contrastingStatusBarStyleForColor:self.navigationController.navigationBar.barTintColor];
-}
-```
-
-### 🎨 **Gradient Colors**
-Tạo gradient với nhiều hướng khác nhau:
-```objc
-NSArray *colors = @[[UIColor flatRedColor], [UIColor flatOrangeColor]];
-UIColor *gradientColor = [UIColor colorWithGradientStyle:UIGradientStyleLeftToRight 
-                                               withFrame:self.view.bounds 
-                                               andColors:colors];
-```
-
-### 🎯 **Color Schemes** 
-Tạo bảng màu tự động từ màu gốc:
-```objc
-NSArray *colorScheme = [NSArray arrayOfColorsWithColorScheme:ColorSchemeAnalogous
-                                                  usingColor:[UIColor flatGreenColor]
-                                               withFlatScheme:YES];
-```
-
-### ⚡ **Contrasting Colors**
-Tự động chọn màu tương phản phù hợp:
-```objc
-UIColor *contrastColor = [UIColor colorWithContrastingBlackOrWhiteColorOn:[UIColor flatRedColor] 
-                                                                   isFlat:YES];
-```
-
-### 🖼️ **Image Colors**
-Trích xuất màu từ hình ảnh:
-```objc
-UIColor *averageColor = [UIColor colorWithAverageColorFromImage:myImage];
-```
-
-## Migration từ iOS 12 lên iOS 13+
-
-### ⚠️ Breaking Changes
-
-1. **Status Bar API đã thay đổi:**
-```objc
-// ❌ Deprecated - Không hoạt động trên iOS 13+
-[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-
-// ✅ Cách mới - Implement trong View Controller  
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
-}
-[self setNeedsStatusBarAppearanceUpdate];
-```
-
-2. **Status Bar Style mới:**
-```objc
-// iOS 13+ có thêm UIStatusBarStyleDarkContent
-if (@available(iOS 13.0, *)) {
-    return UIStatusBarStyleDarkContent; // Text màu tối
-} else {
-    return UIStatusBarStyleDefault;     // Fallback
-}
-```
-
-3. **Dark Mode Support:**
-```objc
-// Tạo màu thích ứng với Dark/Light mode
-UIColor *adaptiveColor = [UIColor colorWithLightModeColor:[UIColor flatBlueColor]
-                                            darkModeColor:[UIColor flatBlueDarkColor]];
-```
-
-### 🔄 Cách chuyển đổi
-
-1. **Update minimum deployment target** trong project settings lên iOS 13.0
-2. **Thay thế** tất cả `UIApplication.setStatusBarStyle` bằng `preferredStatusBarStyle`
-3. **Sử dụng** `colorWithLightModeColor:darkModeColor:` cho Dark Mode
-4. **Test** ứng dụng ở cả Light và Dark mode
+- **Flat Colors**: Hơn 24 màu flat được thiết kế đẹp mắt
+- **Gradient Colors**: Tạo gradient với nhiều hướng khác nhau
+- **Color Schemes**: Tạo bảng màu tự động từ màu gốc
+- **Contrasting Colors**: Tự động chọn màu tương phản phù hợp
+- **Image Colors**: Trích xuất màu từ hình ảnh
 
 ## Khắc phục sự cố
 
@@ -249,15 +112,6 @@ Nếu gặp lỗi "unexpectedly did not find the new dependency in the package g
 5. **Restart Xcode**
 
 ## Changelog
-
-### Version 3.0.0 (iOS 13+ Update)
-- ✅ **iOS 13+ Support**: Nâng minimum deployment target lên iOS 13.0
-- 🌓 **Dark Mode**: Thêm `colorWithLightModeColor:darkModeColor:` cho dynamic colors
-- 📊 **Status Bar**: Cập nhật hỗ trợ `UIStatusBarStyleDarkContent` cho iOS 13+
-- ⚠️ **Breaking Changes**: 
-  - Loại bỏ deprecated `UIApplication.setStatusBarStyle` 
-  - Developers cần implement `preferredStatusBarStyle` trong View Controllers
-- 🧹 **Code Cleanup**: Dọn dẹp code thừa và cập nhật APIs deprecated
 
 ### Version 1.0.0
 - Hỗ trợ Swift Package Manager
