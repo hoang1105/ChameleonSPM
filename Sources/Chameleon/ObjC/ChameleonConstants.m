@@ -10,6 +10,9 @@
 
 const UIStatusBarStyle UIStatusBarStyleContrast = 100;
 
+API_AVAILABLE(ios(13.0))
+const UIStatusBarStyle UIStatusBarStyleDarkContentCompat = 101;
+
 @implementation ChameleonConstants
 
 @end

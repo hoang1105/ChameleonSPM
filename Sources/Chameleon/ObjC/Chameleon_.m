@@ -16,21 +16,26 @@
 + (void)setGlobalThemeUsingPrimaryColor:(UIColor *)primaryColor
                        withContentStyle:(UIContentStyle)contentStyle {
     
+    // Note: Status bar styling should be handled by individual View Controllers
+    // using their preferredStatusBarStyle method since iOS 13+
+    // [[UIApplication sharedApplication] setStatusBarStyle:] is deprecated
+    
     if (contentStyle == UIContentStyleContrast) {
         
-        if ([ContrastColor(primaryColor, YES) isEqual:FlatWhite]) {
-            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-        } else {
-            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-        }
+        // Developers should implement preferredStatusBarStyle in their View Controllers
+        // if ([ContrastColor(primaryColor, YES) isEqual:FlatWhite]) {
+        //     return UIStatusBarStyleLightContent;
+        // } else {
+        //     return UIStatusBarStyleDefault; // or UIStatusBarStyleDarkContent on iOS 13+
+        // }
         
     } else if (contentStyle == UIContentStyleLight) {
         
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+        // return UIStatusBarStyleLightContent;
         
     } else {
         
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+        // return UIStatusBarStyleDefault; // or UIStatusBarStyleDarkContent on iOS 13+
     }
     
     [[self class] customizeBarButtonItemWithPrimaryColor:primaryColor contentStyle:contentStyle];
@@ -53,21 +58,26 @@
                      withSecondaryColor:(UIColor *)secondaryColor
                         andContentStyle:(UIContentStyle)contentStyle {
     
+    // Note: Status bar styling should be handled by individual View Controllers
+    // using their preferredStatusBarStyle method since iOS 13+
+    // [[UIApplication sharedApplication] setStatusBarStyle:] is deprecated
+    
     if (contentStyle == UIContentStyleContrast) {
         
-        if ([ContrastColor(primaryColor, YES) isEqual:FlatWhite]) {
-            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-        } else {
-            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-        }
+        // Developers should implement preferredStatusBarStyle in their View Controllers
+        // if ([ContrastColor(primaryColor, YES) isEqual:FlatWhite]) {
+        //     return UIStatusBarStyleLightContent;
+        // } else {
+        //     return UIStatusBarStyleDefault; // or UIStatusBarStyleDarkContent on iOS 13+
+        // }
         
     } else if (contentStyle == UIContentStyleLight) {
         
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+        // return UIStatusBarStyleLightContent;
         
     } else {
         
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+        // return UIStatusBarStyleDefault; // or UIStatusBarStyleDarkContent on iOS 13+
     }
     
     [[self class] customizeBarButtonItemWithPrimaryColor:primaryColor contentStyle:contentStyle];

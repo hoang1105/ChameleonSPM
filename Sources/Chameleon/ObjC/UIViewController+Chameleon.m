@@ -126,8 +126,17 @@
     
     if (self.shouldContrast) {
 
-        CGRect statusBarFrame = [UIApplication sharedApplication].statusBarFrame;
-        UIView *topView = [self.view findTopMostViewForPoint:CGPointMake(CGRectGetMidX(statusBarFrame), 2)];
+        // iOS 13+ compatible way to get status bar height
+        CGFloat statusBarHeight = 0;
+        if (@available(iOS 13.0, *)) {
+            UIWindowScene *windowScene = (UIWindowScene *)[UIApplication sharedApplication].connectedScenes.anyObject;
+            statusBarHeight = windowScene.statusBarManager.statusBarFrame.size.height;
+        } else {
+            // Fallback for iOS 12 and earlier
+            statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
+        }
+        
+        UIView *topView = [self.view findTopMostViewForPoint:CGPointMake(CGRectGetMidX(self.view.bounds), 2)];
         
         return [self contrastingStatusBarStyleForColor:topView.backgroundColor];
         
@@ -148,18 +157,19 @@
     if (contentStyle == UIContentStyleContrast) {
         
         if ([ContrastColor(primaryColor, YES) isEqual:FlatWhite]) {
-            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+            // Use preferredStatusBarStyle instead of deprecated setStatusBarStyle
+            [self setStatusBarStyle:UIStatusBarStyleLightContent];
         } else {
-            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+            [self setStatusBarStyle:UIStatusBarStyleDefault];
         }
         
     } else if (contentStyle == UIContentStyleLight) {
         
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+        [self setStatusBarStyle:UIStatusBarStyleLightContent];
         
     } else {
         
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+        [self setStatusBarStyle:UIStatusBarStyleDefault];
     }
     
     [[self class] customizeBarButtonItemWithPrimaryColor:primaryColor contentStyle:contentStyle];
@@ -184,18 +194,18 @@
     if (contentStyle == UIContentStyleContrast) {
         
         if ([ContrastColor(primaryColor, YES) isEqual:FlatWhite]) {
-            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+            [self setStatusBarStyle:UIStatusBarStyleLightContent];
         } else {
-            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+            [self setStatusBarStyle:UIStatusBarStyleDefault];
         }
         
     } else if (contentStyle == UIContentStyleLight) {
         
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+        [self setStatusBarStyle:UIStatusBarStyleLightContent];
         
     } else {
         
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+        [self setStatusBarStyle:UIStatusBarStyleDefault];
     }
     
     [[self class] customizeBarButtonItemWithPrimaryColor:primaryColor contentStyle:contentStyle];
@@ -221,18 +231,18 @@
     if (contentStyle == UIContentStyleContrast) {
         
         if ([ContrastColor(primaryColor, YES) isEqual:FlatWhite]) {
-            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+            [self setStatusBarStyle:UIStatusBarStyleLightContent];
         } else {
-            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+            [self setStatusBarStyle:UIStatusBarStyleDefault];
         }
         
     } else if (contentStyle == UIContentStyleLight) {
         
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+        [self setStatusBarStyle:UIStatusBarStyleLightContent];
         
     } else {
         
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+        [self setStatusBarStyle:UIStatusBarStyleDefault];
     }
     
     [[UILabel appearance] setSubstituteFontName:fontName];
